@@ -32,8 +32,6 @@ export default async function handler(req, res) {
       }
     `;
 
-    console.log("Sending request to GitHub GraphQL API");
-
     const response = await fetch('https://api.github.com/graphql', {
       method: 'POST',
       headers: {
@@ -74,7 +72,6 @@ export default async function handler(req, res) {
       forks: repo.forkCount
     }));
     
-    console.log(`Successfully fetched ${formattedRepos.length} repositories`);
     res.status(200).json(formattedRepos);
   } catch (error) {
     console.error("Error in GitHub API handler:", error);
